@@ -24,5 +24,5 @@ main = do
         , ("<XF86Sleep>", spawn "sudo pm-suspend")
         , ("M-l", spawn "slock")
         , ("M-f", spawn "firefox")
-        , ("M-i", spawn "/home/markus/dev/intellij15/bin/idea.sh")
+        , ("M-i", spawn "~/dev/intellij15/bin/idea.sh")
         ]
