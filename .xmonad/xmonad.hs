@@ -14,7 +14,6 @@ main = do
         , borderWidth = 1
         , manageHook = manageDocks <+> (isFullscreen --> doFullFloat) <+> manageHook defaultConfig
         , layoutHook = avoidStruts  $ smartBorders $ layoutHook defaultConfig
-        --, layoutHook = smartBorders $ layoutHook defaultConfig
         , startupHook = setWMName "LG3D"
         }
         `additionalKeysP`
