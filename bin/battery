@@ -1,0 +1,18 @@
+#!/bin/sh
+
+battery_now=`cat /sys/class/power_supply/BAT0/energy_now`
+battery_full=`cat /sys/class/power_supply/BAT0/energy_full`
+
+plugged=`cat /sys/class/power_supply/AC0/online`
+
+battery_state=$(($battery_now * 100 / $battery_full))
+
+if [ "$battery_state" -le 10 ] && [ "$plugged" -lt 1 ]; then
+  echo "<fc=#cc0000>"$battery_state"%</fc>"
+elif [ "$battery_state" -le 25 ] && [ "$plugged" -lt 1 ]; then
+  echo "<fc=#cccc00>"$battery_state"%</fc>"
+else
+  echo $battery_state"%"
+fi
+
+exit 0
