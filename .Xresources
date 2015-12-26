@@ -68,7 +68,7 @@ URxvt.background:                     rgb:00/00/00
 ! URxvt*path:                           search path
 ! URxvt*backgroundPixmap:               file[;geom]
 ! URxvt*iconFile:                       file
-URxvt.font:                           xft:Source Code Pro
+URxvt.font:                           xft:Source Code Pro Light:size=12
 ! URxvt*boldFont:                       fontname
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
@@ -81,7 +81,7 @@ URxvt.font:                           xft:Source Code Pro
 ! URxvt*iconName:                       string
 ! URxvt*saveLines:                      number
 ! URxvt*buffered:                       boolean
-URxvt.depth:                          12
+URxvt.depth:                          24
 ! URxvt*visual:                         number
 ! URxvt*transient-for:                  windowid
 ! URxvt*override-redirect:              boolean
@@ -142,11 +142,9 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           false
-/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-URxvt*boldFont: xft:Monospace:pixelsize=14
 
 ! Fix font space
-URxvt*letterSpace: -1
+!!URxvt*letterSpace: -1
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
@@ -159,49 +157,51 @@ URxvt.urlLauncher:          firefox
 
 ! Cursor
 URxvt.cursorBlink:          true
-URxvt.cursorColor:          #657b83
 URxvt.cursorUnderline:      false
 
 ! Pointer
 URxvt.pointerBlank:         true
+! Base16 Green Screen
+! Scheme: Chris Kempson (http://chriskempson.com)
 
-!!Source http://github.com/altercation/solarized
+! Base16 Bright
+! Scheme: Chris Kempson (http://chriskempson.com)
 
-*foreground: #657b83
-!!*fading: 40
-*fadeColor: #002b36
-*cursorColor: #93a1a1
-*pointerColorBackground: #586e75
-*pointerColorForeground: #93a1a1
+#define base00 #000000
+#define base01 #303030
+#define base02 #505050
+#define base03 #b0b0b0
+#define base04 #d0d0d0
+#define base05 #e0e0e0
+#define base06 #f5f5f5
+#define base07 #ffffff
+#define base08 #fb0120
+#define base09 #fc6d24
+#define base0A #fda331
+#define base0B #a1c659
+#define base0C #76c7b7
+#define base0D #6fb3d2
+#define base0E #d381c3
+#define base0F #be643c
 
-!! black dark/light
-!*color0: #073642
-!*color8: #002b36
+*.foreground:   #20fb01
+*.background:   base00
+*.cursorColor:  #20fb01
 
-!! red dark/light
-!*color1: #dc322f
-!*color9: #cb4b16
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
 
-!! green dark/light
-!*color2: #859900
-!*color10: #586e75
-
-!! yellow dark/light
-!*color3: #b58900
-!*color11: #657b83
-
-!! blue dark/light
-*color4: #268bd2
-*color12: #839496
-
-!! magenta dark/light
-!*color5: #d33682
-!*color13: #6c71c4
-
-!! cyan dark/light
-!*color6: #2aa198
-!*color14: #93a1a1
-
-!! white dark/light
-!*color7: #eee8d5
-!*color15: #fdf6e3
+*.color8:       base03
+*.color9:       base09
+*.color10:      base01
+*.color11:      base02
+*.color12:      base04
+*.color13:      base06
+*.color14:      base0F
+*.color15:      base07

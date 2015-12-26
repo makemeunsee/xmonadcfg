@@ -2,11 +2,11 @@ Config { font = "xft:Source Code Pro:size=9"
        , borderColor = "black"
        , border = TopB
        , bgColor = "black"
-       , fgColor = "grey"
+       , fgColor = "white"
        , position = TopW L 100
-       , commands = [ Run Network "eth0" ["-w","4","-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Network "wlan0" ["-w","4","-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Com "battery" ["-w", "3"] "battery" 30
+       , commands = [ Run Network "eth0" ["-w","4","-L","0","-H","65536","--normal","white","--high","red"] 10
+                    , Run Network "wlan0" ["-w","4","-L","0","-H","65536","--normal","white","--high","red"] 10
+                    , Run Com "battery" ["-w", "4"] "battery" 30
                     , Run Com "wifi_strength" [] "wifi" 30
                     , Run Cpu ["-w","2","-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-w","2","-t","Mem: <usedratio>%"] 10
