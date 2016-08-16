@@ -12,8 +12,9 @@ Config { font = "xft:Source Code Pro:size=9"
                     , Run Memory ["-w","2","-t","Mem: <usedratio>%"] 10
                     , Run Swap ["-w","2"] 10
                     , Run Date "%Y/%m/%d %H:%M:%S" "date" 10
+                    , Run Com "/home/markus/bin/kbLayout" [] "layout" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %cpu% | %memory% * %swap% | %wifi% }{ %eth0% %wlan0%      %battery%      <fc=#0066aa>%date%</fc>"
+       , template = " %layout% | %cpu% | %memory% * %swap% | %wifi% }{ %eth0% %wlan0%      %battery%      <fc=#0066aa>%date%</fc>"
        }
