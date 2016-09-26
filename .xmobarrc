@@ -1,20 +1,72 @@
-Config { font = "xft:Source Code Pro:size=9"
-       , borderColor = "black"
-       , border = TopB
-       , bgColor = "black"
-       , fgColor = "white"
-       , position = TopW L 100
-       , commands = [ Run Network "eth0" ["-w","4","-L","0","-H","65536","--normal","white","--high","red"] 10
-                    , Run Network "wlan0" ["-w","4","-L","0","-H","65536","--normal","white","--high","red"] 10
-                    , Run Com "battery" ["-w", "4"] "battery" 30
-                    , Run Com "wifi_strength" [] "wifi" 30
-                    , Run Cpu ["-w","2","-L","3","-H","50","--normal","green","--high","red"] 10
-                    , Run Memory ["-w","2","-t","Mem: <usedratio>%"] 10
-                    , Run Swap ["-w","2"] 10
-                    , Run Date "%Y/%m/%d %H:%M:%S" "date" 10
-                    , Run Com "/home/markus/bin/kbLayout" [] "layout" 10
-                    ]
-       , sepChar = "%"
-       , alignSep = "}{"
-       , template = " %layout% | %cpu% | %memory% * %swap% | %wifi% }{ %eth0% %wlan0%      %battery%      <fc=#0066aa>%date%</fc>"
-       }
+Config {
+    font = "xft:Source Code Pro:size=8"
+  , additionalFonts = [ "xft:Deja Vu Sans:size=8" ]
+  , borderColor = "black"
+  , border = TopB
+  , bgColor = "black"
+  , fgColor = "#a4a4a4"
+  , position = TopW L 100
+  , commands = [
+      Run DynNetwork [
+        "--template" , "<dev>:<tx>kB/s,<rx>kB/s"
+      , "--Low"      , "1000"       -- units: B/s
+      , "--High"     , "5000"       -- units: B/s
+      , "--low"      , "darkgreen"
+      , "--normal"   , "darkorange"
+      , "--high"     , "darkred"
+      , "--width"    , "4"
+      ] 10
+    , Run Battery [
+      "--template" , "<acstatus>"
+      , "--Low"      , "10"        -- units: %
+      , "--High"     , "25"        -- units: %
+      , "--low"      , "darkred"
+      , "--normal"   , "darkorange"
+      , "--high"     , "darkgreen"
+      , "--width"    , "2"
+      , "--" -- battery specific options
+        -- discharging status
+        , "-o"	, "<left>%"
+        -- AC "on" status
+        , "-O"	, "<fn=1><fc=#dAA520>⚡</fc></fn><left>%"
+        -- charged status
+        , "-i"	, "<fn=1><fc=#dAA520>☀</fc></fn>"
+      ] 50
+    , Run Com "bin/wifi_strength" [] "wifi" 30
+    , Run Swap ["-w","1"] 10
+    , Run Date "%Y/%m/%d %H:%M:%S" "date" 10
+    , Run Kbd [
+        ("ch(fr)" , "CH")
+      , ("us"     , "US")
+      ]
+    , Run MultiCpu [
+        "--template" , "Cpu:<total0>%<total1>%<total2>%<total3>%"
+      , "--Low"      , "50"         -- units: %
+      , "--High"     , "85"         -- units: %
+      , "--low"      , "darkgreen"
+      , "--normal"   , "darkorange"
+      , "--high"     , "darkred"
+      , "--width"    , "3"
+      ] 10
+   , Run CoreTemp [
+       "--template" , "<core0>°C"
+     , "--Low"      , "70"        -- units: °C
+     , "--High"     , "85"        -- units: °C
+     , "--low"      , "darkgreen"
+     , "--normal"   , "darkorange"
+     , "--high"     , "darkred"
+     ] 50
+   , Run Memory [
+       "--template" ,"Mem: <usedratio>%"
+     , "--Low"      , "20"        -- units: %
+     , "--High"     , "90"        -- units: %
+     , "--low"      , "darkgreen"
+     , "--normal"   , "darkorange"
+     , "--high"     , "darkred"
+     , "--width"    , "2"
+     ] 10
+  ]
+  , sepChar = "%"
+  , alignSep = "}{"
+  , template = "%kbd% | %multicpu% - %coretemp% | %memory% - %swap% }{ %wifi% | %dynnetwork% |  %battery%  <fc=#2288cc>%date%</fc>"
+}

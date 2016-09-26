@@ -12,25 +12,27 @@ import XMonad.Hooks.EwmhDesktops
 
 main = do
     kbLayoutIdRef <- newIORef 0
-    xmproc <- spawnPipe "~/bin/xmobar_restart"
+    _ <- spawnPipe "~/bin/xmobar_restart"
+    _ <- spawnPipe "~/bin/wallpapers"
     xmonad $ defaultConfig
         { terminal = "urxvt"
         , modMask = mod4Mask
         , borderWidth = 1
+        , normalBorderColor = "#224488"
+        , focusedBorderColor = "#bb3322"
         , layoutHook = mkToggle (single NBFULL) $ avoidStruts  $ smartBorders $ layoutHook defaultConfig
         , startupHook = setWMName "LG3D"
         , handleEventHook = mconcat [ fullscreenEventHook, docksEventHook ]
         }
         `additionalKeysP`
-        [ ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
+        [ ("<XF86AudioMute>", spawn "amixer sset Master toggle")
         , ("<XF86AudioLowerVolume>", spawn "amixer set 'Master' 3%-")
         , ("<XF86AudioRaiseVolume>", spawn "amixer set 'Master' 3%+")
         , ("<XF86Sleep>", spawn "sudo pm-suspend")
-        --, ("M-x", spawn "xrdb ~/.Xresources")
-        , ("M-l", spawn "slock")
+        , ("M-S-x", spawn "xrdb ~/.Xresources")
+        , ("M-S-l", spawn "slock")
         , ("M-f", sendMessage $ Toggle NBFULL)
         , ("M-S-f", spawn "firefox")
-        -- , ("M-S-i", spawn "~/dev/intellij15/bin/idea.sh")
         , ("M-S-s", cycleKbLayout kbLayoutIdRef)
         ]
 

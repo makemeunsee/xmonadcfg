@@ -1,1 +1,0 @@
-setxkbmap -print -verbose 10 | grep layout | sed -E 's/layout: +([a-z]+)/\1/'
