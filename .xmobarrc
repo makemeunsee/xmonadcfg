@@ -16,11 +16,20 @@ Config {
       , "--high"     , "darkred"
       , "--width"    , "4"
       ] 10
+    , Run Volume "default" "Master" [
+        "--template"
+      , "<status><fn=1><volumevbar></fn>"
+      , "--"
+        , "--on", "O" 
+        , "--onc", "#a4a4a4"
+        , "--off", "X"
+        , "--offc", "#a4a4a4"
+      ] 10
     , Run Battery [
-      "--template" , "<acstatus>"
+        "--template" , "<acstatus>"
       , "--Low"      , "10"        -- units: %
       , "--High"     , "25"        -- units: %
-      , "--low"      , "darkred"
+      , "--low"      , "red"
       , "--normal"   , "darkorange"
       , "--high"     , "darkgreen"
       , "--width"    , "2"
@@ -68,5 +77,5 @@ Config {
   ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = "%kbd% | %multicpu% - %coretemp% | %memory% - %swap% }{ %wifi% | %dynnetwork% |  %battery%  <fc=#2288cc>%date%</fc>"
+  , template = "%kbd% | %multicpu% - %coretemp% | %memory% - %swap% }{ %wifi%  %dynnetwork%  %battery%  %default:Master%  <fc=#2288cc>%date%</fc>"
 }
