@@ -161,47 +161,24 @@ URxvt.cursorUnderline:      false
 
 ! Pointer
 URxvt.pointerBlank:         true
-! Base16 Green Screen
-! Scheme: Chris Kempson (http://chriskempson.com)
 
-! Base16 Bright
-! Scheme: Chris Kempson (http://chriskempson.com)
+*background:#3d3d3d
+*foreground:#d3d3d3
 
-#define base00 #000000
-#define base01 #303030
-#define base02 #505050
-#define base03 #b0b0b0
-#define base04 #d0d0d0
-#define base05 #e0e0e0
-#define base06 #f5f5f5
-#define base07 #ffffff
-#define base08 #fb0120
-#define base09 #fc6d24
-#define base0A #fda331
-#define base0B #a1c659
-#define base0C #76c7b7
-#define base0D #6fb3d2
-#define base0E #d381c3
-#define base0F #be643c
+*color0: #03010F
+*color1: #503b43
+*color2: #353B64
+*color3: #8c2424
+*color4: #6067AC
+*color5: #624D19
+*color6: #7C83C0
+*color7: #9A600F
+*color8: #AB9E9E
+*color9: #B28930
+*color10: #BBADA9
+*color11: #C37305
+*color12: #D0AE58
+*color13: #D7B559
+*color14: #F4E199
+*color15: #F6F4DF
 
-*.foreground:   #20fb01
-*.background:   base00
-*.cursorColor:  #20fb01
-
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
-
-*.color8:       base03
-*.color9:       base09
-*.color10:      base01
-*.color11:      base02
-*.color12:      base04
-*.color13:      base06
-*.color14:      base0F
-*.color15:      base07
